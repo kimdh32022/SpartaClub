@@ -38,6 +38,9 @@ public class MemoService {
         return memoRepository.findAllByOrderByModifiedAtDesc().stream().map(MemoResponseDto::new).toList();
     }
 
+    public List<MemoResponseDto> getMemosByKeyword(String keyword) {
+        return memoRepository.findAllByContentsContainsOrderByModifiedAtDesc(keyword).stream().map(MemoResponseDto::new).toList();
+    }
     // 3. 수정하기
     @Transactional
     public Long updateMemo(Long id, MemoRequestDto requestDto) {

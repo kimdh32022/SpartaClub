@@ -27,6 +27,11 @@ import java.util.List;
         return memoService.getMemos();
     }
 
+    @GetMapping("/memos/contents")
+    public List<MemoResponseDto> getMemoByKeyword(String keyword) {
+        return memoService.getMemosByKeyword(keyword);
+    }
+
     @PutMapping("/memos/{id}")
     public Long updateMemo(@PathVariable Long id, @RequestBody MemoRequestDto requestDto) {
         return memoService.updateMemo(id,requestDto);
