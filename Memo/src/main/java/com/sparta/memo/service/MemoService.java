@@ -35,7 +35,7 @@ public class MemoService {
 
     // 2. 조회하기
     public List<MemoResponseDto> getMemos() {
-        return memoRepository.findAll().stream().map(MemoResponseDto::new).toList();
+        return memoRepository.findAllByOrderByModifiedAtDesc().stream().map(MemoResponseDto::new).toList();
     }
 
     // 3. 수정하기
