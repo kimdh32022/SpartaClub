@@ -27,5 +27,6 @@ public class BeanTest {
 //        chicken.eat();
         food.eat();
     }
-
+        // primary 와 Qualifier 중 누가 더 우선 순위가 높냐?
+        //  좁은 범위에 적용되는 기술인 Qualifier이 우선 순위가 높다.
 }
