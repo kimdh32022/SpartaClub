@@ -18,6 +18,7 @@ public class ProductController {
 
         User user = userDetails.getUser();
         System.out.println("user.getUsername() = " + user.getUsername());
+        System.out.println("user.getEmail() = " + user.getEmail());
 
         return "redirect:/";
     }
