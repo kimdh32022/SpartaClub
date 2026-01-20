@@ -1,5 +1,6 @@
 package com.sparta.myselectshop.controller;
 
+import com.sparta.myselectshop.dto.FolderRequestDto;
 import com.sparta.myselectshop.dto.ProductMypriceRequestDto;
 import com.sparta.myselectshop.dto.ProductRequestDto;
 import com.sparta.myselectshop.dto.ProductResponseDto;
@@ -42,4 +43,12 @@ public class ProductController {
                 page-1, size, sortBy,isAsc
         );
     }
+
+    @PostMapping("/products/{productId}/folder")
+    public void addFolder(@PathVariable Long productId,
+                          @RequestParam Long folderId,
+                          @AuthenticationPrincipal UserDetailsImpl userDetails
+            ) {
+                productService.addFolder(productId,folderId,userDetails.getUser());
+            }
 }
