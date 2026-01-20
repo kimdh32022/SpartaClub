@@ -99,4 +99,17 @@ public class ProductService {
 
         productFolderRepository.save(new ProductFolder(product,folder));
     }
+
+    public Page<ProductResponseDto> getProductsInFolder(Long folderId, int page, int size, String sortBy, boolean isAsc, User user) {
+        //페이지 정렬
+        Sort.Direction direction = isAsc ? Sort.Direction.ASC : Sort.Direction.DESC;
+        Sort sort = Sort.by(direction, sortBy);
+        Pageable pageable = PageRequest.of(page, size, sort);
+        // 해당 유저의 폴더안에 있는 해당 상품의 목록을 받아오기
+        Page<Product> productList = productRepository.findAllByUserAndProductFolderList_folderId(user, folderId,pageable);
+        // 받아온 목록의 형 변한으로 DTO 타입으로 만들기
+        Page<ProductResponseDto> responseDtoList = productList.map(ProductResponseDto::new);
+
+        return responseDtoList;
+    }
 }
