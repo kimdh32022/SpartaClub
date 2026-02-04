@@ -13,6 +13,7 @@ public class MemoResponseDto {
 
     public static MemoResponseDto from(Memo memo) {
         MemoResponseDto memoDto = MemoResponseDto.builder()
+                .id(memo.getMemoId())
                 .title(memo.getTitle())
                 .content(memo.getContent())
                 .build();

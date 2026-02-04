@@ -34,4 +34,16 @@ public class MemoController {
     public List<MemoResponseDto> readAllMemos(){
         return memoService.allMemo();
     }
+
+    // 메모 수정
+    @PutMapping("/memo/{id}")
+    public void updateMemo(@PathVariable Long id, @RequestBody MemoRequestDto memoRequestDto){
+        memoService.updateMemo(id,memoRequestDto);
+    }
+
+    // 메모 삭제
+    @DeleteMapping("/memo/{id}")
+    public void deleteMemo(@PathVariable Long id){
+        memoService.deleteMemo(id);
+    }
 }
